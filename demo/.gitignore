@@ -1,0 +1,15 @@
+## IDEs
+/.vscode
+/.idea
+
+## Vendor
+/node_modules
+
+## Logs
+logs
+*.log
+
+## Temp dirs & trash
+/temp
+/tmp
+.DS_Store
