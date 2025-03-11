@@ -25,7 +25,7 @@ async function run() {
       dot: input.showHidden,
     })
   )
-    .filter((path) => !path.includes(join(input.target, '.git'))) // always ignore `.git` directory
+    .filter((path) => !path.includes(join(input.target, '.git') + '/')) // always ignore `.git` directory
     .filter((path) => path.endsWith('/')) // leave only directories
     .map((path) => path.slice(0, -1)) // remove the trailing `/` (added by `mark: true`)
     .filter(Boolean) // remove empty strings (if any)
