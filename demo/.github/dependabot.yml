@@ -1,0 +1,18 @@
+# yaml-language-server: $schema=https://json.schemastore.org/dependabot-2.0.json
+# docs: https://docs.github.com/en/free-pro-team@latest/github/administering-a-repository/customizing-dependency-updates
+
+version: 2
+
+updates:
+  - package-ecosystem: npm
+    directory: /
+    groups:
+      npm-production: {dependency-type: production}
+      npm-development: {dependency-type: development}
+    schedule: {interval: monthly}
+
+  - package-ecosystem: github-actions
+    directory: /
+    groups:
+      github-actions: {patterns: ['*']}
+    schedule: {interval: monthly}
