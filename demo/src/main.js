@@ -45,7 +45,7 @@ async function run() {
               cwd: dir,
             })
           )
-            .filter((path) => !path.includes(join(dir, '.git'))) // always ignore `.git` directory
+            .filter((path) => !path.includes(join(dir, '.git') + '/')) // always ignore `.git` directory
             .sort((a, b) => {
               const [aIsDir, bIsDir] = [a.endsWith('/'), b.endsWith('/')]
 
