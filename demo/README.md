@@ -4,7 +4,7 @@
 [![Build Status][badge_build]][link_build]
 [![License][badge_license]][link_license]
 
-This GitHub Action generates an `index.html` file for a specified directories, allowing easy browsing of static files.
+This GitHub Action generates an `index.html` file for specified directories, allowing easy browsing of static files.
 It is particularly useful for repositories using [GitHub Pages](https://pages.github.com/) or other static file
 hosting solutions.
 
@@ -63,12 +63,12 @@ jobs:
 
 These input parameters can be specified using `with`:
 
-| Name          | Type          | Default | Required | Description                                                                |
-|---------------|---------------|---------|----------|----------------------------------------------------------------------------|
-| `target`      | `string`      | `"."`   | No       | The path to the directory where the `index.html` file should be generated  |
-| `ignore`      | `string/list` | (empty) | No       | Comma or newline-separated patterns of files/directories to exclude        |
-| `show-hidden` | `boolean`     | `false` | No       | Whether to include hidden files and directories in the listing             |
-| `overwrite`   | `boolean`     | `false` | No       | Whether to overwrite an existing `index.html` file in the target directory |
+| Name          | Type          | Default | Required | Description                                                                                                      |
+|---------------|---------------|---------|----------|------------------------------------------------------------------------------------------------------------------|
+| `target`      | `string`      | `"."`   | No       | The path to the directory where the `index.html` file should be generated                                        |
+| `ignore`      | `string/list` | (empty) | No       | Comma or newline-separated [patterns](https://github.com/isaacs/node-glob#usage) of files/directories to exclude |
+| `show-hidden` | `boolean`     | `false` | No       | Whether to include hidden files and directories in the listing                                                   |
+| `overwrite`   | `boolean`     | `false` | No       | Whether to overwrite an existing `index.html` file in the target directory                                       |
 
 ### Outputs
 
