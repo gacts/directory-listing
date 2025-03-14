@@ -5,9 +5,10 @@ import styles from './styles.css?raw'
  *
  * @param {String} path
  * @param {Array<{path: String, isDirectory: Boolean, size: Number, modifiedAt: Date}>} list
+ * @param {{footerContent?: String}} [opts]
  * @returns {string}
  */
-export default function generate(path, list) {
+export default function generate(path, list, opts) {
   const indexOf = '/' + path.replace(/\.+/, '')
 
   return `<!DOCTYPE html>
@@ -84,6 +85,7 @@ export default function generate(path, list) {
     </tbody>
   </table>
 </main>
+${opts && opts.footerContent && `<footer>${opts.footerContent}</footer>`}
 </body>
 </html>
 `

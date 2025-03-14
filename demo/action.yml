@@ -28,6 +28,9 @@ inputs:
   overwrite:
     description: Whether to overwrite existing index.html files
     default: 'false'
+  footer:
+    description: The footer content to be added to the index file
+    default: 'Repository <a href="https://github.com/${{ github.repository }}">${{ github.repository }}</a>'
 
 outputs:
   generated:
