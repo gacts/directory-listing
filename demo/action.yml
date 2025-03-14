@@ -21,7 +21,7 @@ inputs:
       in the index file.
 
       For more examples, please refer to: https://github.com/isaacs/node-glob#usage
-    default: '' # eg. node_modules/**,**/*.log
+    default: '**/index.html' # eg. node_modules/**,**/*.log
   show-hidden:
     description: Whether to display hidden files and directories
     default: 'false'
