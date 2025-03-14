@@ -47,6 +47,7 @@ jobs:
           # target: .
           # ignore: |
           #   build/**
+          #   **/index.html
           #   node_modules/**,**/*.log
           # show-hidden: true
           # overwrite: true
@@ -63,13 +64,13 @@ jobs:
 
 These input parameters can be specified using `with`:
 
-| Name          | Type          | Default          | Required | Description                                                                 |
-|---------------|---------------|------------------|----------|-----------------------------------------------------------------------------|
-| `target`      | `string`      | `.`              | No       | The path to the directory where the `index.html` file should be generated   |
-| `ignore`      | `string/list` | `<empty>`        | No       | Comma or newline-separated [patterns][glob] of files/directories to exclude |
-| `show-hidden` | `boolean`     | `false`          | No       | Whether to include hidden files and directories in the listing              |
-| `overwrite`   | `boolean`     | `false`          | No       | Whether to overwrite an existing `index.html` file in the target directory  |
-| `footer`      | `string`      | `<link to repo>` | No       | The footer content to be added to the index file                            |
+| Name          | Type          | Default              | Required | Description                                                                 |
+|---------------|---------------|----------------------|----------|-----------------------------------------------------------------------------|
+| `target`      | `string`      | `.`                  | No       | The path to the directory where the `index.html` file should be generated   |
+| `ignore`      | `string/list` | `**/index.html`      | No       | Comma or newline-separated [patterns][glob] of files/directories to exclude |
+| `show-hidden` | `boolean`     | `false`              | No       | Whether to include hidden files and directories in the listing              |
+| `overwrite`   | `boolean`     | `false`              | No       | Whether to overwrite an existing `index.html` file in the target directory  |
+| `footer`      | `string`      | `<link to the repo>` | No       | The footer content to be added to the index file                            |
 
 [glob]:https://github.com/isaacs/node-glob#usage
 
