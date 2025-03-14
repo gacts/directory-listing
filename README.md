@@ -1,276 +1,112 @@
-# Create a JavaScript Action
+# 📂 Generate `index.html` Files for Directory Listings
 
-[![GitHub Super-Linter](https://github.com/actions/javascript-action/actions/workflows/linter.yml/badge.svg)](https://github.com/super-linter/super-linter)
-![CI](https://github.com/actions/javascript-action/actions/workflows/ci.yml/badge.svg)
+![Release Version][badge_release_version]
+[![Build Status][badge_build]][link_build]
+[![License][badge_license]][link_license]
 
-Use this template to bootstrap the creation of a JavaScript action. :rocket:
+This GitHub Action generates an `index.html` file for specified directories, allowing easy browsing of static files.
+It is particularly useful for repositories using [GitHub Pages](https://pages.github.com/) or other static file
+hosting solutions.
 
-This template includes compilation support, tests, a validation workflow,
-publishing, and versioning guidance.
+It works straightforward - you provide a path to a directory, and it generates an `index.html` file in each
+subdirectory it finds within it. Once generated, you can store all the files, including the `index.html` files,
+and deploy them to your hosting provider (e.g., GitHub Pages).
 
-If you are new, there's also a simpler introduction in the
-[Hello world JavaScript action repository](https://github.com/actions/hello-world-javascript-action).
+The motivation behind this action is to provide a simple way to generate directory listings with a modern look due to
+GitHub Pages' lack of support for directory listings. However, in some cases, you may need to host artifacts via
+HTTP (e.g., for Helm charts) with opportunities to browse them.
 
-## Create Your Own Action
+> Inspired by [generate-directory-listing-action](https://github.com/yKicchan/generate-directory-listing-action).
 
-To create your own action, you can use this repository as a template! Just
-follow the below instructions:
+[badge_build]:https://img.shields.io/github/actions/workflow/status/gacts/directory-listing/tests.yml?branch=master&maxAge=30
+[badge_release_version]:https://img.shields.io/github/release/gacts/directory-listing.svg?maxAge=30
+[badge_license]:https://img.shields.io/github/license/gacts/directory-listing.svg?longCache=true
+[link_build]:https://github.com/gacts/directory-listing/actions
 
-1. Click the **Use this template** button at the top of the repository
-1. Select **Create a new repository**
-1. Select an owner and name for your new repository
-1. Click **Create repository**
-1. Clone your new repository
+## 🎨 Demo
 
-> [!IMPORTANT]
->
-> Make sure to remove or update the [`CODEOWNERS`](./CODEOWNERS) file! For
-> details on how to use this file, see
-> [About code owners](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners).
-
-## Initial Setup
-
-After you've cloned the repository to your local machine or codespace, you'll
-need to perform some initial setup steps before you can develop your action.
+| Light                           | Dark                          |
+|---------------------------------|-------------------------------|
+| ![Light Theme](./art/light.png) | ![Dark Theme](./art/dark.png) |
 
 > [!NOTE]
->
-> You'll need to have a reasonably modern version of
-> [Node.js](https://nodejs.org) handy. If you are using a version manager like
-> [`nodenv`](https://github.com/nodenv/nodenv) or
-> [`nvm`](https://github.com/nvm-sh/nvm), you can run `nodenv install` in the
-> root of your repository to install the version specified in
-> [`package.json`](./package.json). Otherwise, 20.x or later should work!
+> The theme is selected automatically based on the user's system preference (light or dark mode).
 
-1. :hammer_and_wrench: Install the dependencies
+The full demo is always [available here](https://gacts.github.io/directory-listing/demo/).
 
-   ```bash
-   npm install
-   ```
-
-1. :building_construction: Package the JavaScript for distribution
-
-   ```bash
-   npm run bundle
-   ```
-
-1. :white_check_mark: Run the tests
-
-   ```bash
-   $ npm test
-
-   PASS  ./index.test.js
-     ✓ throws invalid number (3ms)
-     ✓ wait 500 ms (504ms)
-     ✓ test runs (95ms)
-
-   ...
-   ```
-
-## Update the Action Metadata
-
-The [`action.yml`](action.yml) file defines metadata about your action, such as
-input(s) and output(s). For details about this file, see
-[Metadata syntax for GitHub Actions](https://docs.github.com/en/actions/creating-actions/metadata-syntax-for-github-actions).
-
-When you copy this repository, update `action.yml` with the name, description,
-inputs, and outputs for your action.
-
-## Update the Action Code
-
-The [`src/`](./src/) directory is the heart of your action! This contains the
-source code that will be run when your action is invoked. You can replace the
-contents of this directory with your own code.
-
-There are a few things to keep in mind when writing your action code:
-
-- Most GitHub Actions toolkit and CI/CD operations are processed asynchronously.
-  In `main.js`, you will see that the action is run in an `async` function.
-
-  ```javascript
-  const core = require('@actions/core')
-  //...
-
-  async function run() {
-    try {
-      //...
-    } catch (error) {
-      core.setFailed(error.message)
-    }
-  }
-  ```
-
-  For more information about the GitHub Actions toolkit, see the
-  [documentation](https://github.com/actions/toolkit/blob/main/README.md).
-
-So, what are you waiting for? Go ahead and start customizing your action!
-
-1. Create a new branch
-
-   ```bash
-   git checkout -b releases/v1
-   ```
-
-1. Replace the contents of `src/` with your action code
-1. Add tests to `__tests__/` for your source code
-1. Format, test, and build the action
-
-   ```bash
-   npm run all
-   ```
-
-   > This step is important! It will run [`ncc`](https://github.com/vercel/ncc)
-   > to build the final JavaScript action code with all dependencies included.
-   > If you do not run this step, your action will not work correctly when it is
-   > used in a workflow. This step also includes the `--license` option for
-   > `ncc`, which will create a license file for all of the production node
-   > modules used in your project.
-
-1. (Optional) Test your action locally
-
-   The [`@github/local-action`](https://github.com/github/local-action) utility
-   can be used to test your action locally. It is a simple command-line tool
-   that "stubs" (or simulates) the GitHub Actions Toolkit. This way, you can run
-   your JavaScript action locally without having to commit and push your changes
-   to a repository.
-
-   The `local-action` utility can be run in the following ways:
-
-   - Visual Studio Code Debugger
-
-     Make sure to review and, if needed, update
-     [`.vscode/launch.json`](./.vscode/launch.json)
-
-   - Terminal/Command Prompt
-
-     ```bash
-     # npx @github/local action <action-yaml-path> <entrypoint> <dotenv-file>
-     npx @github/local-action . src/main.js .env
-     ```
-
-   You can provide a `.env` file to the `local-action` CLI to set environment
-   variables used by the GitHub Actions Toolkit. For example, setting inputs and
-   event payload data used by your action. For more information, see the example
-   file, [`.env.example`](./.env.example), and the
-   [GitHub Actions Documentation](https://docs.github.com/en/actions/learn-github-actions/variables#default-environment-variables).
-
-1. Commit your changes
-
-   ```bash
-   git add .
-   git commit -m "My first action is ready!"
-   ```
-
-1. Push them to your repository
-
-   ```bash
-   git push -u origin releases/v1
-   ```
-
-1. Create a pull request and get feedback on your action
-1. Merge the pull request into the `main` branch
-
-Your action is now published! :rocket:
-
-For information about versioning your action, see
-[Versioning](https://github.com/actions/toolkit/blob/main/docs/action-versioning.md)
-in the GitHub Actions toolkit.
-
-## Validate the Action
-
-You can now validate the action by referencing it in a workflow file. For
-example, [`ci.yml`](./.github/workflows/ci.yml) demonstrates how to reference an
-action in the same repository.
+## 🚀 Usage
 
 ```yaml
-steps:
-  - name: Checkout
-    id: checkout
-    uses: actions/checkout@v3
+jobs:
+  generate-index:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: gacts/directory-listing@v1
+        with:
+          target: ./assets
+          # target: .
+          # ignore: |
+          #   build/**
+          #   node_modules/**,**/*.log
+          # show-hidden: true
+          # overwrite: true
 
-  - name: Test Local Action
-    id: test-action
-    uses: ./
-    with:
-      milliseconds: 1000
-
-  - name: Print Output
-    id: output
-    run: echo "${{ steps.test-action.outputs.time }}"
+      - uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./assets
 ```
 
-For example workflow runs, check out the
-[Actions tab](https://github.com/actions/javascript-action/actions)! :rocket:
+## ⚙️ Customization
 
-## Usage
+### Inputs
 
-After testing, you can create version tag(s) that developers can use to
-reference different stable versions of your action. For more information, see
-[Versioning](https://github.com/actions/toolkit/blob/main/docs/action-versioning.md)
-in the GitHub Actions toolkit.
+These input parameters can be specified using `with`:
 
-To include the action in a workflow in another repository, you can use the
-`uses` syntax with the `@` symbol to reference a specific branch, tag, or commit
-hash.
+| Name          | Type          | Default          | Required | Description                                                                 |
+|---------------|---------------|------------------|----------|-----------------------------------------------------------------------------|
+| `target`      | `string`      | `.`              | No       | The path to the directory where the `index.html` file should be generated   |
+| `ignore`      | `string/list` | `<empty>`        | No       | Comma or newline-separated [patterns][glob] of files/directories to exclude |
+| `show-hidden` | `boolean`     | `false`          | No       | Whether to include hidden files and directories in the listing              |
+| `overwrite`   | `boolean`     | `false`          | No       | Whether to overwrite an existing `index.html` file in the target directory  |
+| `footer`      | `string`      | `<link to repo>` | No       | The footer content to be added to the index file                            |
 
-```yaml
-steps:
-  - name: Checkout
-    id: checkout
-    uses: actions/checkout@v4
+[glob]:https://github.com/isaacs/node-glob#usage
 
-  - name: Run my Action
-    id: run-action
-    uses: actions/javascript-action@v1 # Commit with the `v1` tag
-    with:
-      milliseconds: 1000
+### Outputs
 
-  - name: Print Output
-    id: output
-    run: echo "${{ steps.run-action.outputs.time }}"
-```
+| Name        | Type       | Description                                              |
+|-------------|------------|----------------------------------------------------------|
+| `generated` | `string[]` | An array of paths where `index.html` files were created. |
 
-## Dependency License Management
+## 📦 Releasing
 
-This template includes a GitHub Actions workflow,
-[`licensed.yml`](./.github/workflows/licensed.yml), that uses
-[Licensed](https://github.com/licensee/licensed) to check for dependencies with
-missing or non-compliant licenses. This workflow is initially disabled. To
-enable the workflow, follow the below steps.
+To release a new version:
 
-1. Open [`licensed.yml`](./.github/workflows/licensed.yml)
-1. Uncomment the following lines:
+1. Build the action distribution: `make build` or `npm run build`
+2. Commit and push all changes, including the `dist/` directory (this is **mandatory**).
+3. Publish a new release via the [GitHub Releases](https://github.com/gacts/directory-listing/releases) page.
+   Use the format `vX.Y.Z` for the release tag (e.g., `v1.2.3`).
+4. The `vX` and `vX.Y` tags (e.g., `v1`, `v1.2`) will be updated automatically.
 
-   ```yaml
-   # pull_request:
-   #   branches:
-   #     - main
-   # push:
-   #   branches:
-   #     - main
-   ```
+> [!TIP]
+> Use [Dependabot](https://bit.ly/45zwLL1) to keep this action updated in your repository.
 
-1. Save and commit the changes
+## 💬 Support
 
-Once complete, this workflow will run any time a pull request is created or
-changes pushed directly to `main`. If the workflow detects any dependencies with
-missing or non-compliant licenses, it will fail the workflow and provide details
-on the issue(s) found.
+[![Issues][badge_issues]][link_issues]
+[![Pull Requests][badge_pulls]][link_pulls]
 
-### Updating Licenses
+Encounter a bug or need a feature? [Create an issue][link_create_issue] in this repository.
 
-Whenever you install or update dependencies, you can use the Licensed CLI to
-update the licenses database. To install Licensed, see the project's
-[Readme](https://github.com/licensee/licensed?tab=readme-ov-file#installation).
+[badge_issues]:https://img.shields.io/github/issues/gacts/directory-listing.svg?maxAge=45
+[badge_pulls]:https://img.shields.io/github/issues-pr/gacts/directory-listing.svg?maxAge=45
+[link_issues]:https://github.com/gacts/directory-listing/issues
+[link_create_issue]:https://github.com/gacts/directory-listing/issues/new
+[link_pulls]:https://github.com/gacts/directory-listing/pulls
 
-To update the cached licenses, run the following command:
+## 📜 License
 
-```bash
-licensed cache
-```
+This project is licensed under the [MIT License][link_license].
 
-To check the status of cached licenses, run the following command:
-
-```bash
-licensed status
-```
+[link_license]:https://github.com/gacts/directory-listing/blob/master/LICENSE

@@ -1,0 +1,133 @@
+:root {
+  --color-text-primary: #444;
+  --color-text-secondary: #111;
+  --color-bg-primary: #ddd;
+  --color-bg-secondary: #bbb;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-text-primary: #bbb;
+    --color-text-secondary: #eee;
+    --color-bg-primary: #242424;
+    --color-bg-secondary: #444;
+  }
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  font-family: ui-sans-serif, system-ui, sans-serif;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  margin: 2em 1.25em;
+  font-size: 16px;
+}
+
+@media screen and (max-width: 480px) {
+  body {
+    font-size: 14px;
+  }
+}
+
+@media screen and (min-width: 1800px) {
+  body,
+  html {
+    font-size: 20px;
+  }
+}
+
+a {
+  color: var(--color-text-secondary);
+  font-weight: 500;
+  text-decoration: none;
+
+  &:hover {
+    opacity: 0.85;
+    transition: opacity 0.2s linear;
+    text-decoration: underline;
+  }
+
+  &:visited {
+    color: var(--color-text-secondary);
+  }
+}
+
+header,
+main {
+  padding: 0 2rem;
+}
+
+header {
+  margin-bottom: 1rem;
+
+  h1 {
+    display: flex;
+    align-items: center;
+
+    & > span {
+      margin-left: 0.5rem;
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.75em;
+      background-color: var(--color-bg-secondary);
+    }
+  }
+}
+
+main {
+  overflow: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+
+  th,
+  td {
+    padding: 1.25rem 1rem;
+    border-bottom: 1px solid var(--color-bg-secondary);
+    text-align: left;
+    white-space: nowrap;
+
+    svg.icon {
+      width: 1em;
+      height: 0.98em;
+      padding-right: 0.1em;
+      position: relative;
+      top: 0.2em;
+    }
+  }
+
+  th.name,
+  td.name {
+    text-align: left;
+  }
+
+  th.size,
+  td.size {
+    width: 10%;
+    text-align: center;
+  }
+
+  th.mod-date,
+  td.mod-date {
+    width: 20%;
+    text-align: center;
+  }
+
+  tbody > tr:last-child > td {
+    border-bottom: none;
+  }
+}
+
+footer {
+  text-align: center;
+  padding: 1rem 0;
+}

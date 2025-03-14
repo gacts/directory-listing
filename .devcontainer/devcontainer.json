@@ -4,22 +4,15 @@
   "postCreateCommand": "npm install",
   "customizations": {
     "codespaces": {
-      "openFiles": ["README.md"]
+      "openFiles": ["src/main.js"]
     },
     "vscode": {
       "extensions": [
-        "bierner.markdown-preview-github-styles",
         "davidanson.vscode-markdownlint",
         "dbaeumer.vscode-eslint",
         "esbenp.prettier-vscode",
         "github.copilot",
-        "github.copilot-chat",
-        "github.vscode-github-actions",
-        "github.vscode-pull-request-github",
-        "me-dutour-mathieu.vscode-github-actions",
-        "redhat.vscode-yaml",
-        "rvest.vs-code-prettier-eslint",
-        "yzhang.markdown-all-in-one"
+        "redhat.vscode-yaml"
       ],
       "settings": {
         "editor.defaultFormatter": "esbenp.prettier-vscode",
