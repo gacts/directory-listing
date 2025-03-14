@@ -18,7 +18,7 @@ HTTP (e.g., for Helm charts) with opportunities to browse them.
 
 > Inspired by [generate-directory-listing-action](https://github.com/yKicchan/generate-directory-listing-action).
 
-[badge_build]:https://img.shields.io/github/actions/workflow/status/gacts/directory-listing/tests.yml?branch=master&maxAge=30
+[badge_build]:https://img.shields.io/github/actions/workflow/status/gacts/directory-listing/tests.yml?branch=main&maxAge=30
 [badge_release_version]:https://img.shields.io/github/release/gacts/directory-listing.svg?maxAge=30
 [badge_license]:https://img.shields.io/github/license/gacts/directory-listing.svg?longCache=true
 [link_build]:https://github.com/gacts/directory-listing/actions
