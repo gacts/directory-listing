@@ -2,7 +2,7 @@ import { getBooleanInput, getInput, getMultilineInput, setFailed, info, setOutpu
 import { glob } from 'glob'
 import { join } from 'node:path'
 import { existsSync, statSync, writeFileSync } from 'node:fs'
-import { default as generate } from './template/generator.js'
+import { default as generate } from './template.js'
 
 const input = {
   target: getInput('target'),
@@ -15,7 +15,7 @@ const input = {
   overwrite: getBooleanInput('overwrite'),
 }
 
-async function run() {
+;(async () => {
   /** @type {Array<String>} */
   const dirs = (
     await glob(join(input.target, '**'), {
@@ -102,10 +102,4 @@ async function run() {
   )
 
   setOutput('generated', generated)
-}
-
-;(async () => {
-  await run()
-})().catch((error) => {
-  setFailed(error.message)
-})
+})().catch(setFailed)

@@ -16,9 +16,6 @@
     "listing",
     "index.html"
   ],
-  "exports": {
-    ".": "./dist/index.js"
-  },
   "scripts": {
     "build": "rollup --config rollup.config.js",
     "fmt": "prettier --write ./src ./*.js && eslint ./src/**/*.js --fix",
