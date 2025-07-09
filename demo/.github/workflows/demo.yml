@@ -19,6 +19,8 @@ jobs:
   demo:
     name: Generate files and update the demo (GitHub Pages)
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
       - name: Run this action
