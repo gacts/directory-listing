@@ -31,7 +31,7 @@
     "@rollup/plugin-commonjs": "^29.0.0",
     "@rollup/plugin-node-resolve": "^16.0.3",
     "@rollup/plugin-terser": "^0.4.4",
-    "@types/node": "^24.9.2",
+    "@types/node": "^24.10.0",
     "eslint": "^9.39.0",
     "eslint-plugin-import": "^2.32.0",
     "prettier": "^3.6.2",
@@ -41,9 +41,9 @@
     "@rollup/rollup-linux-x64-gnu": "*"
   },
   "engines": {
-    "node": "20"
+    "node": "24"
   },
   "volta": {
-    "node": "20"
+    "node": "24"
   }
 }
