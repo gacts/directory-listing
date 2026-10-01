@@ -27,15 +27,15 @@
     "glob": "^13.0.6"
   },
   "devDependencies": {
-    "@eslint/compat": "^2.1.0",
+    "@eslint/compat": "^2.1.1",
     "@rollup/plugin-commonjs": "^29.0.3",
     "@rollup/plugin-node-resolve": "^16.0.3",
     "@rollup/plugin-terser": "^1.0.0",
-    "@types/node": "^26.4.0",
+    "@types/node": "^26.6.3",
     "eslint": "^9.39.4",
     "eslint-plugin-import": "^2.32.0",
-    "prettier": "^3.9.6",
-    "rollup": "^4.63.1"
+    "prettier": "^3.9.9",
+    "rollup": "^4.63.5"
   },
   "optionalDependencies": {
     "@rollup/rollup-linux-x64-gnu": "*"
